@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# Colors
+R='\033[0;31m'
+G='\033[0;32m'
+Y='\033[1;33m'
+B='\033[1;34m'
+NC='\033[0m' # No Color
+
+# Clear Screen
+clear
+
+# Step 1: Welcome animation
+echo -e "${Y}"
+figlet -f slant "Welcome To"
+figlet -f big "Takbir Page"
+echo -e "${NC}"
+echo -e "${G}[1] NEXT"
+echo -e "[2] BACK${NC}"
+read -p "Enter your choice: " choice
+
+if [[ $choice == "2" ]]; then
+  echo -e "${R}Exiting...${NC}"
+  exit
+fi
+
+# Step 2: Banner and Info
+clear
+echo -e "${B}"
+toilet -f pagga -F border --gay "View Boost"
+echo -e "${NC}"
+echo -e "${G}Tiktok View Grow Auto${NC}"
+echo
+read -p "Enter your TikTok Video Link: " link
+
+# Step 3: Ask for number of views
+read -p "How many views do you want? " views
+
+# Step 4: Force to follow
+echo -e "${Y}You need to follow this channel first...${NC}"
+sleep 2
+am start https://www.tiktok.com/@takbirahmed0099
+
+# Step 5: Loop until user confirms follow
+while true; do
+  echo
+  read -p "Did you follow? (yes or no): " confirm
+  if [[ "$confirm" == "yes" ]]; then
+    break
+  else
+    echo -e "${R}Redirecting to follow page again...${NC}"
+    sleep 2
+    am start https://www.tiktok.com/@takbirahmed0099
+  fi
+done
+
+# Step 6: Processing animation
+echo -e "${B}Processing has started...${NC}"
+sleep 1
+for i in {1..10}; do
+  echo -ne "${G}["
+  for j in $(seq 1 $i); do echo -n "#"; done
+  for j in $(seq $i 10); do echo -n "-"; done
+  echo -ne "] $((i * 10))%\r"
+  sleep 0.5
+done
+
+echo -e "\n${Y}Processing complete!${NC}"
+sleep 1
+echo -e "${G}Your work has done! Thank you...${NC}"
